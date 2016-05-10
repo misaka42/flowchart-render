@@ -1,5 +1,7 @@
 (function(){
 
+  var ENV = '';
+
   var defaultOptions = {
     source: 'CDN',
     firebaseURL: 'https://cdn.firebase.com/js/client/2.4.2/firebase.js',
@@ -73,7 +75,10 @@
     var self = this;
 
     var loadDataFromFirebase = function () {
-      new Firebase(self.options.firebaseRoot).child('projects/' + self.options.name).once('value', function (snapshot) {
+      if (!window.Firebase) {
+        window.Firebase = require('firebase');
+      }
+      new window.Firebase(self.options.firebaseRoot).child('projects/' + self.options.name).once('value', function (snapshot) {
         self.render(snapshot.val());
       });
     };
@@ -81,7 +86,7 @@
     // load from firebase
     if (this.options.source === 'firebase') {
       // firebase already exist
-      if (typeof Firebase === 'function') {
+      if (typeof Firebase === 'function' || ENV === 'CMD') {
         loadDataFromFirebase();
       } else {
         loadScript(this.options.firebaseURL, loadDataFromFirebase);
@@ -130,6 +135,9 @@
   Render.prototype.renderCanvas = function (canvas) {
     var ctx = canvas.getContext('2d');
     var self = this;
+    if (!this.data.lines) {
+      return;
+    }
     this.data.lines.forEach(function (line) {
       renderLink(ctx, line, {
         size: self.settings.grid.size,
@@ -157,6 +165,7 @@
   }
   else if (typeof module === 'object' && module.exports) {
   	module.exports = Render;
+    ENV = 'CMD';
   }
   else {
   	window.Render = Render;
