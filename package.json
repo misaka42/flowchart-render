@@ -1,0 +1,23 @@
+{
+  "name": "flowchart-render",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ppq1991/flowchart-render.git"
+  },
+  "keywords": [
+    "flowchart",
+    "flowchart-render"
+  ],
+  "author": "Misaka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ppq1991/flowchart-render/issues"
+  },
+  "homepage": "https://github.com/ppq1991/flowchart-render#readme"
+}
