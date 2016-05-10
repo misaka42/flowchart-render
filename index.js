@@ -29,10 +29,10 @@
   }
 
   if (typeof define === 'function' && define.amd) {
-  	define( function() { return ModuleA; } );
+  	define( function() { return Render; } );
   }
   else if (typeof module === 'object' && module.exports) {
-  	module.exports = ModuleA;
+  	module.exports = Render;
   }
   else {
   	window.Render = Render;
