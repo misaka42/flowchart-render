@@ -39,10 +39,10 @@
   function renderLink (ctx, link, options) {
     ctx.beginPath();
     ctx.moveTo(link.x1, link.y1);
-    ctx.lineTo(link.x1, link.y2 - options.size);
-    ctx.moveTo(link.x1, link.y2 - options.size);
-    ctx.lineTo(link.x2, link.y2 - options.size);
-    ctx.moveTo(link.x2, link.y2 - options.size);
+    ctx.lineTo(link.x1, (link.y1 + link.y2) / 2);
+    ctx.moveTo(link.x1, (link.y1 + link.y2) / 2);
+    ctx.lineTo(link.x2, (link.y1 + link.y2) / 2);
+    ctx.moveTo(link.x2, (link.y1 + link.y2) / 2);
     ctx.lineTo(link.x2, link.y2);
     ctx.strokeStyle = options.color;
     ctx.lineWidth = options.width;
