@@ -29,6 +29,8 @@
     style.left = block.x * grid + 'px';
     style.top = block.y * grid + 'px';
     style.zIndex = 99;
+    style.borderWidth = '1px';
+    style.borderStyle = 'solid';
     applyStyle(el, style);
     el.setAttribute('data-id', block.id);
     return el;
@@ -64,11 +66,12 @@
   };
 
   Render.prototype.clean = function () {
+    this.el.innerHTML = '加载中...';
+    this.el.removeAttribute('style');
     applyStyle(this.el, {
       padding: '15px',
       textAlign: 'center'
     });
-    this.el.innerHTML = '加载中...';
   };
 
   Render.prototype.loadData = function () {
